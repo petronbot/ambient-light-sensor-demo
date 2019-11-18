@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="module" src="scripts/index.mjs"></script>
+  <link rel="stylesheet" href="styles/index.css" />
+  <title>Document</title>
+</head>
+
+<body>
+
+  <blockquote>
+    <p>“Say!<br />
+      In the dark?<br />
+      Here in the dark!<br />
+      Would you, could you, in the dark?”</p>
+    <footer>― Dr. Seuss, Green Eggs and Ham</footer>
+  </blockquote>
+
+  <form id="controls-form">
+    <input type="checkbox" name="toggle-control" id="toggle-control" checked />
+    <label for="toggle-control">Override sensor level</label>
+
+    <fieldset id="light-level-inputs">
+      <legend>Ambient light level</legend>
+      <input type="radio" id="light-level-dim" name="light-level" value="dim" />
+      <label for="light-level-dim">Dim</label>
+      <input type="radio" id="light-level-normal" name="light-level" value="normal" checked />
+      <label for="light-level-normal">Normal</label>
+      <input type="radio" id="light-level-washed" name="light-level" value="washed" />
+      <label for="light-level-washed">Washed</label>
+    </fieldset>
+  </form>
+
+  <code>
+    <dl>
+      <dt>JavaScript enabled</dt>
+      <dd>[true/false]</dd>
+      <dt>Sensor input available</dt>
+      <dd id="debug-sensor-input-available">false</dd>
+    </dl>
+  </code>
+</body>
+
+</html>

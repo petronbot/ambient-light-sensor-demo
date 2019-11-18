@@ -1,0 +1,43 @@
+
+/* This will be ignored by browsers that don't support the light-level media query*/
+@media (light-level: normal) {
+  p {
+    background: url("texture.jpg");
+    color: #333;
+  }
+}
+
+[data-light-level] {
+  /* Apply transition to background color */
+  transition: all .6s ease-in-out;
+}
+
+[data-light-level="normal"] {
+    background: skyblue;
+    color: #333;
+}
+
+@media (light-level: dim) {
+  p {
+    background: #222;
+    color: #ccc;
+  }
+}
+
+[data-light-level="dim"] {
+  background: darkslategrey;
+  color: #ccc;
+}
+
+@media (light-level: washed) {
+  p {
+    background: white;
+    color: black;
+    font-size: 2em;
+  }
+}
+
+[data-light-level="washed"] {
+  background: rgb(225, 225, 243);
+  color: #333;
+}
