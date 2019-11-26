@@ -5,12 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script type="module" src="scripts/index.mjs"></script>
+  <script async src="scripts/index.js"></script>
   <link rel="stylesheet" href="styles/index.css" />
-  <title>Document</title>
+  <title>Ambient Light Sensor Demo</title>
 </head>
 
 <body>
+
+  <h1>Ambient Light Sensor Demo</h1>
+  <p>If your browser supports the AmbientLightSensor JavaScript API and your device is providing an ambient light level
+    value then you should see the styles on this page adapt based on whether you are in a "normal" (50-1000 lux), "dim"
+    (0-50 lux) or "washed" (1000+ lux) environment.</p>
+
+  <p>Bonus: You can also use the controls below to manually set the light level of your choice.</p>
 
   <blockquote>
     <p>“Say!<br />
@@ -20,26 +27,16 @@
     <footer>― Dr. Seuss, Green Eggs and Ham</footer>
   </blockquote>
 
-  <form id="controls-form">
+  <form>
     <input type="checkbox" name="toggle-control" id="toggle-control" checked />
-    <label for="toggle-control">Override sensor level</label>
-
-    <fieldset id="light-level-inputs">
-      <legend>Ambient light level</legend>
-      <input type="radio" id="light-level-dim" name="light-level" value="dim" />
-      <label for="light-level-dim">Dim</label>
-      <input type="radio" id="light-level-normal" name="light-level" value="normal" checked />
-      <label for="light-level-normal">Normal</label>
-      <input type="radio" id="light-level-washed" name="light-level" value="washed" />
-      <label for="light-level-washed">Washed</label>
-    </fieldset>
+    <label for="toggle-control">Check this box to manually control the light level</label><br />
+    <input type="range" id="light-level" name="light-level" min="0" max="2" value="1" />
+    <label id="light-level-label">Normal</label>
   </form>
 
   <code>
     <dl>
-      <dt>JavaScript enabled</dt>
-      <dd>[true/false]</dd>
-      <dt>Sensor input available</dt>
+      <dt>Sensor input detected (lux):</dt>
       <dd id="debug-sensor-input-available">false</dd>
     </dl>
   </code>
