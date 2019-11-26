@@ -1,20 +1,20 @@
 const LIGHT_LEVELS = [
   {
-    value: "0",
+    value: '0',
     minLux: 0,
     maxLux: 49,
     name: 'dim',
     label: 'Dim'
   },
   {
-    value: "1",
+    value: '1',
     minLux: 50,
     maxLux: 999,
     name: 'normal',
     label: 'Normal'
   },
   {
-    value: "2",
+    value: '2',
     minLux: 1000,
     maxLux: 10000, // Warning: Arbitrarily large number!
     name: 'washed',
@@ -43,11 +43,11 @@ function startAmbientLightSensor() {
       return illuminance > level.minLux && illuminance < level.maxLux
     })
 
-    // Here's our "ponyfill" bit..
+    // Here's our 'ponyfill' bit..
     document.body.setAttribute('data-light-level', lightLevel.name)
 
     // Keep our UI in sync
-    document.getElementById("light-level").value = lightLevel.value
+    document.getElementById('light-level').value = lightLevel.value
 
     // And let's print the raw value to the UI to help us debug
     document.getElementById('debug-sensor-input-available').textContent = illuminance
@@ -72,12 +72,12 @@ function startAmbientLightSensor() {
 function onFormInputChange(event) {
   const formData = new FormData(event.target.form)
 
-  if (event.target.name === "light-level") {
+  if (event.target.name === 'light-level') {
     const lightLevel = LIGHT_LEVELS.find(function (level) {
       console.log(level, event.target.value, level.value === event.target.value)
       return level.value === event.target.value
     })
-    console.log('onFormInputChange', lightLevel)
+
     document.getElementById('light-level-label').textContent = lightLevel.label
     // Fake the ponyfill's behaviour by directly setting a data attribute on the body
     document.body.setAttribute('data-light-level', lightLevel.name)
@@ -92,23 +92,18 @@ function onFormInputChange(event) {
   }
 }
 
+// Let's give form controls their behaviour..
 
-// Wait for the DOM to be ready...
-document.addEventListener('DOMContentLoaded', function () {
-  // ..then give form controls their behaviour..
+const toggleControlInput = document.getElementById('toggle-control');
+const lightLevelInput = document.getElementById('light-level')
 
-  const toggleControlInput = document.getElementById("toggle-control");
-  const lightLevelInput = document.getElementById("light-level")
+toggleControlInput.addEventListener('change', onFormInputChange)
+lightLevelInput.addEventListener('change', onFormInputChange)
 
-  toggleControlInput.addEventListener('change', onFormInputChange)
-  lightLevelInput.addEventListener('change', onFormInputChange)
+// .. and finally start the light sensor
+const lightSensor = startAmbientLightSensor();
 
-  // .. and finally start the light sensor
-  const lightSensor = startAmbientLightSensor();
-
-  if (lightSensor) {
-    toggleControlInput.checked = false
-    lightLevelInput.setAttribute('disabled', 'true');
-  }
-
-})
+if (lightSensor) {
+  toggleControlInput.checked = false
+  lightLevelInput.setAttribute('disabled', 'true');
+}

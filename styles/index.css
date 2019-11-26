@@ -1,7 +1,7 @@
 body {
   transition: all .6s ease-in-out;
   --background-color: skyblue;
-  --color: #333;
+  --color: #444;
 }
 
 body[data-light-level="normal"] {
@@ -10,13 +10,13 @@ body[data-light-level="normal"] {
 }
 
 body[data-light-level="dim"] {
-  background: darkslategrey;
-  color: #ccc;
+  --background-color: darkslategrey;
+  --color: #ccc;
 }
 
 body[data-light-level="washed"] {
-  background: rgb(225, 225, 243);
-  color: #333;
+  --background-color: rgb(225, 225, 243);
+  --color: #333;
 }
 
 /* Sample UI styles */
